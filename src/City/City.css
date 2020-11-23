@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.city {
+    padding: 10px;
+    margin: 5px 0px;
+    border: 3px solid rgba(127, 255, 212, 0.12);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.city:hover {
+    border: 3px solid aquamarine;
+    background: #18181828;
+}
+
+.offset {
+    margin-left: 10px;
+}
+
+.temperature {
+    font-size: 24px;
+}
+
+.temperature img {
+    max-width: 30px;
+}

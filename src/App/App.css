@@ -6,6 +6,8 @@
 
 .App {
   min-height: 100vh;
+  /* background: #252525;
+  color: aquamarine; */
   display: grid;
   grid-template-areas: 
   "header header header header header"
@@ -15,17 +17,20 @@
 }
 
 .App-header {
+  padding: 15px;
   background: orange;
   grid-area: header;
 }
 
 .App-sidebar {
   padding: 15px;
-  background: olivedrab;
+  background: #252525;
+  color: aquamarine;
   grid-area: sidebar;
 }
 
 .App-main {
+  padding: 15px;
   background: lightcoral;
   grid-area: main;
 }

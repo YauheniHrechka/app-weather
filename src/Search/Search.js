@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Search.css';
 
+import Cities from '../Cities/Cities';
+
 class Search extends Component {
     state = {
         arrCites: []
@@ -27,11 +29,14 @@ class Search extends Component {
 
     render() {
         let { arrCites } = this.state;
-        console.log(arrCites);
+        // console.log(arrCites);
         return (
-            <div className="search">
-                <input type="text" onChange={this.handleChange} />
-            </div>
+            <>
+                <div className="search">
+                    <input type="text" onChange={this.handleChange} />
+                </div>
+                <Cities arrCites={arrCites} />
+            </>
         )
     }
 }
