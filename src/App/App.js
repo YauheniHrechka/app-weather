@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import AppSidebar from '../AppSidebar/AppSidebar';
+import AppSidebar from '../AppSidebar/AppSidebar.js';
 
 class App extends Component {
   render() {
