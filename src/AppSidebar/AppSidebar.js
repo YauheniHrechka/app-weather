@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './AppSidebar.css';
 
+import Search from '../Search/Search';
+
 class AppSidebar extends Component {
     render() {
         return (
-            <h1>AppSidebar</h1>
+            <Search />
         )
     }
 }
