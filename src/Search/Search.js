@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './Search.css';
 
 import Cities from '../Cities/Cities';
+import AppMain from '../AppMain/AppMain';
 
 class Search extends Component {
     state = {
@@ -35,7 +37,20 @@ class Search extends Component {
                 <div className="search">
                     <input type="text" onChange={this.handleChange} />
                 </div>
-                <Cities arrCites={arrCites} />
+                <BrowserRouter>
+                    <Cities arrCites={arrCites} />
+                    <Switch>
+                        {arrCites.map(city => {
+                            return (
+                                <Route
+                                    key={city.id}
+                                    exact path={`/${city.id}`}
+                                    render={() => <AppMain id={city.id} />}
+                                />
+                            )
+                        })}
+                    </Switch>
+                </BrowserRouter>
             </>
         )
     }

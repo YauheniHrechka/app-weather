@@ -4,7 +4,9 @@ import './AppHeader.css';
 class AppHeader extends Component {
     render() {
         return (
-            <h1>Header</h1>
+            <header className="App-header">
+                <h1>Header</h1>
+            </header>
         )
     }
 }

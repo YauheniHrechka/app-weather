@@ -1,0 +1,37 @@
+
+.App-main {
+    padding: 10px 0;
+    background: #252525;
+    grid-area: main;
+    display: grid;
+    grid-template-areas: 
+    "sidebar content";
+    grid-template-rows: 1fr;
+    grid-template-columns: 320px 1fr;
+}
+
+.App-content {
+    padding: 10px;
+    background: lightcoral;
+    grid-area: content;
+}
+
+.App-sidebar {
+  padding: 10px;
+  /* background: #252525; */
+  /* color: aquamarine; */
+  grid-area: sidebar;
+}
+
+.search {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.search input {
+  height: 24px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 0px 10px;
+}

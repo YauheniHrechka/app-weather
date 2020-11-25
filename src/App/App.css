@@ -10,27 +10,8 @@
   color: aquamarine; */
   display: grid;
   grid-template-areas: 
-  "header header header header header"
-  "sidebar main main main main";
+  "header"
+  "main";
   grid-template-rows: 100px 1fr;
-  grid-template-columns: 350px;
-}
-
-.App-header {
-  padding: 15px;
-  background: orange;
-  grid-area: header;
-}
-
-.App-sidebar {
-  padding: 15px;
-  background: #252525;
-  color: aquamarine;
-  grid-area: sidebar;
-}
-
-.App-main {
-  padding: 15px;
-  background: lightcoral;
-  grid-area: main;
+  /* grid-template-columns: 1fr 150px; */
 }

@@ -1,3 +1,5 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Cities.css';
 
 import City from '../City/City';
@@ -6,14 +8,20 @@ function Cities(props) {
     let { arrCites } = props;
     // console.log('arrCites', arrCites);
     return (
-        <div className="cities">
-            {arrCites.map(city =>
-                <City
-                    key={city.id}
-                    city={city}
-                />
-            )}
-        </div>
+        <nav className="cities">
+            <ul>
+                {arrCites.map(city => {
+                    return (
+                        <li key={city.id}>
+                            <NavLink exact to={`/city/${city.id}`} activeClassName="city-active">
+                                {/* {city.name} */}
+                                <City city={city} />
+                            </NavLink>
+                        </li>
+                    )
+                })}
+            </ul>
+        </nav>
     )
 }
 
