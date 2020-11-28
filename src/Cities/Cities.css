@@ -1,9 +1,9 @@
-a {
+.cities a {
     text-decoration: none;
     color: aquamarine;
     display: block;
 }
 
-ul {
+.cities ul {
     list-style: none;
 }

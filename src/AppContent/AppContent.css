@@ -1,0 +1,18 @@
+
+.header-content {
+    color: aquamarine;
+    grid-area: header;
+}
+
+.header-content span {
+    font-size: 24px;
+}
+
+.chart {
+    /* background: orangered; */
+    grid-area: chart;
+}
+
+.chart canvas {
+    max-width: 100%;
+}

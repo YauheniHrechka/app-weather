@@ -18,26 +18,28 @@ class AppMain extends Component {
         }
 
         let promiseCities = new Promise((resolve, reject) => {
-            fetch(`http://api.openweathermap.org/data/2.5/find?q=${curCity}&appid=70e1ed322b02acbc57d443dd91065f3e`)
+            fetch(`http://api.openweathermap.org/data/2.5/find?q=${curCity}&units=metric&appid=763913fbcf6ba460aee7d1f6fa0395f0`)
                 .then(data => {
                     resolve(data.json())
-                })
+                });
         });
 
-        promiseCities.then(data => {
-            this.setState({ arrCites: data.list });
-        });
+        promiseCities
+            .then(data => {
+                this.setState({ arrCites: data.list });
+            });
     }
 
     render() {
         let { arrCites } = this.state;
         // console.log(arrCites);
+
         return (
             <Router>
                 <main className="App-main">
                     <div className="App-sidebar">
                         <div className="search">
-                            <input type="text" onChange={this.handleChange} />
+                            <input type="text" onChange={this.handleChange} placeholder="input your city" />
                         </div>
                         <Cities arrCites={arrCites} />
                     </div>

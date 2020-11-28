@@ -6,15 +6,18 @@ import City from '../City/City';
 
 function Cities(props) {
     let { arrCites } = props;
-    // console.log('arrCites', arrCites);
+
     return (
         <nav className="cities">
             <ul>
                 {arrCites.map(city => {
                     return (
                         <li key={city.id}>
-                            <NavLink exact to={`/city/${city.id}`} activeClassName="city-active">
-                                {/* {city.name} */}
+                            <NavLink
+                                exact
+                                to={`/city/${city.id}`}
+                                activeClassName="city-active"
+                            >
                                 <City city={city} />
                             </NavLink>
                         </li>

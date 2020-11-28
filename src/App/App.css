@@ -12,6 +12,6 @@
   grid-template-areas: 
   "header"
   "main";
-  grid-template-rows: 100px 1fr;
+  grid-template-rows: 85px 1fr;
   /* grid-template-columns: 1fr 150px; */
 }

@@ -10,7 +10,7 @@
     color: rgba(127, 255, 212, 0.52);
     border: 3px solid rgba(127, 255, 212, 0.12);
     border-radius: 15px;
-    cursor: pointer;
+    /* cursor: pointer; */
     transition: .3s;
 }
 

@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import './City.css';
 
 class City extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    getTemperature = (temp) => {
-        return (temp - 273).toFixed(2);
-    }
 
     getCountry = (country) => {
         return country.toLowerCase();
@@ -18,10 +11,9 @@ class City extends Component {
         let { main, name, sys, weather } = this.props.city;
         let { description, icon } = weather[0];
 
-        let temperature = this.getTemperature(main.temp);
+        let temperature = main.temp;
         let country = this.getCountry(sys.country);
 
-        // console.log(name);
         return (
             <div className="city">
                 <span><b>{`${name}, ${sys.country}`}</b></span>

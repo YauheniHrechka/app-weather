@@ -1,6 +1,6 @@
 
 .App-main {
-    padding: 10px 0;
+    padding-bottom: 10px;
     background: #252525;
     grid-area: main;
     display: grid;
@@ -12,14 +12,17 @@
 
 .App-content {
     padding: 10px;
-    background: lightcoral;
     grid-area: content;
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "navDays"
+    "chart";
+    grid-template-rows: 40px 36px 1fr;
 }
 
 .App-sidebar {
-  padding: 10px;
-  /* background: #252525; */
-  /* color: aquamarine; */
+  padding: 50px 10px 10px 10px;
   grid-area: sidebar;
 }
 
@@ -29,6 +32,12 @@
 }
 
 .search input {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: aquamarine;
+  color: #252525;
+  font-weight: bold;
   height: 24px;
   border-radius: 5px;
   border: none;

@@ -1,0 +1,30 @@
+
+.nav-days {
+    color: aquamarine;
+    grid-area: navDays;
+}
+
+.nav-days ul li {
+    display: inline-block;
+}
+
+.day-active p {
+    color: aquamarine;
+    border: 3px dashed aquamarine;
+    background: #18181828;
+}
+
+.nav-days ul li a:hover {
+    color: aquamarine;
+    border: 3px solid aquamarine;
+    background: #18181828;
+}
+
+.nav-days ul li a {
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 0 15px;
+    color: rgba(127, 255, 212, 0.52);
+    border: 3px solid rgba(127, 255, 212, 0.12);
+    border-radius: 15px;
+}
