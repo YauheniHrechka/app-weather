@@ -35,8 +35,6 @@ class AppContent extends Component {
         arrForecast.forEach(({ dt, weather, main, wind }, index) => {
 
             let { icon, description } = weather[0];
-            console.log(icon);
-
             let objDate = this.getConverterDate(dt);
 
             let currentStrDate = `${objDate.monthName} ${objDate.date}`;
@@ -118,26 +116,28 @@ class AppContent extends Component {
         let temperature = main.temp;
         let country = this.getCountry(sys.country);
 
-        console.log('this.props.city', this.props.city);
+        // console.log('this.props.city', this.props.city);
         return (
             <Router>
-                <div className="header-content">
-                    <span><b>{`${name}, ${sys.country}`}</b></span>
-                    <img className="offset" src={`http://openweathermap.org/images/flags/${country}.png`} alt={country} />
-                    <em className="offset">{description}</em>
+                <div className="App-content">
+                    <div className="header-content">
+                        <span><b>{`${name}, ${sys.country}`}</b></span>
+                        <img className="offset" src={`http://openweathermap.org/images/flags/${country}.png`} alt={country} />
+                        <em className="offset">{description}</em>
+                    </div>
+                    <Days id={id} arrDays={arrDays} />
+                    <Switch>
+                        {arrDays.map(day => {
+                            return (
+                                <Route
+                                    key={day.mainDate}
+                                    exact path={`/city/${id}/${day.date}`}
+                                    render={() => <Chart day={day} />}
+                                />
+                            )
+                        })}
+                    </Switch>
                 </div>
-                <Days id={id} arrDays={arrDays} />
-                <Switch>
-                    {arrDays.map(day => {
-                        return (
-                            <Route
-                                key={day.mainDate}
-                                exact path={`/city/${id}/${day.date}`}
-                                render={() => <Chart day={day} />}
-                            />
-                        )
-                    })}
-                </Switch>
             </Router>
         )
     }

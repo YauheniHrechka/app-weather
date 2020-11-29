@@ -1,0 +1,15 @@
+.day {
+    padding: 5px 10px;
+    margin: 0px 5px;
+    font-size: 14px;
+    color: rgba(127, 255, 212, 0.52);
+    border: 3px solid rgba(127, 255, 212, 0.12);
+    border-radius: 15px;
+    transition: .3s;
+}
+
+.day-active .day, .day:hover {
+    color: aquamarine;
+    border: 3px solid aquamarine;
+    background: #18181828;
+}

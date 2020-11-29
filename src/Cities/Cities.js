@@ -5,17 +5,17 @@ import './Cities.css';
 import City from '../City/City';
 
 function Cities(props) {
-    let { arrCites } = props;
+    let { arrCites, currentDate } = props;
 
     return (
         <nav className="cities">
             <ul>
-                {arrCites.map(city => {
+                {arrCites.map((city, index) => {
                     return (
                         <li key={city.id}>
                             <NavLink
                                 exact
-                                to={`/city/${city.id}`}
+                                to={`/city/${city.id}/${currentDate}`}
                                 activeClassName="city-active"
                             >
                                 <City city={city} />
@@ -24,7 +24,7 @@ function Cities(props) {
                     )
                 })}
             </ul>
-        </nav>
+        </nav >
     )
 }
 

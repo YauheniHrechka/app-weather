@@ -6,8 +6,7 @@ import './Chart.css';
 class Chart extends Component {
 
     render() {
-        let { mainDate, labels, temps, icons } = this.props.day;
-        console.log('this.props.day', this.props.day);
+        let { mainDate, forecast, labels, temps, icons } = this.props.day;
 
         let data = {
             labels: labels,
@@ -16,8 +15,7 @@ class Chart extends Component {
                 backgroundColor: 'rgba(255, 99, 132, 0.12)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: temps,
-                pointStyle: icons,
-                radius: 3
+                pointStyle: icons
             }]
         }
 
@@ -25,35 +23,40 @@ class Chart extends Component {
             <div className="chart">
                 <Line
                     data={data}
-                    // width={100}
-                    // height={30}
                     options={{
                         maintainAspectRatio: false,
                         responsive: true,
+                        elements: {
+                            line: {
+                                fill: false
+                            },
+                            point: {
+
+                            }
+                        },
                         tooltips: {
-                            // callbacks: {
-                            //     title: (tooltipItems, data) => {
-                            //         return
-                            //     },
-                            //     label: (tooltipItems, data) => {
-                            //         return
-                            //     }
-                            // }
+                            intersect: false,
+                            callbacks: {
+                                title: tooltipItems => {
+                                    return `${forecast[tooltipItems[0].index].description}\ntest`;
+                                },
+                                // label: (tooltipItems, data) => {
+                                //     return
+                                // }
+                            }
                         },
                         scales: {
                             yAxes: [
                                 {
                                     ticks: {
                                         autoSkip: true,
-                                        // minTicksLimit: 10,
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        callback: (value, index, values) => {
+                                            return `${value} °C`;
+                                        }
                                     },
                                     gridLines: {
                                         display: false
-                                    },
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'probability'
                                     }
                                 }
                             ],
@@ -65,12 +68,9 @@ class Chart extends Component {
                             //             // maxRotation: 10,
                             //             max: 10,
                             //             beginAtZero: true,
-                            //             // callback: (value, index, values) => {
-                            //             //     return <p>{`$${value}`}</p>;
-                            //             //     // return (
-                            //             //     //     <img src="https://openweathermap.org/img/w/01d.png" alt="logo" />
-                            //             //     // );
-                            //             // }
+                            //             callback: (value, index, values) => {
+                            //                 return `${value}`;
+                            //             }
                             //         },
                             //         gridLines: {
                             //             // display: false

@@ -34,13 +34,14 @@
 .search input {
   display: block;
   width: 100%;
-  text-align: center;
-  background: aquamarine;
-  color: #252525;
-  font-weight: bold;
-  height: 24px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
+  height: 36px;
   padding: 0px 10px;
+  text-align: center;
+  background: #18181828;
+  color: aquamarine;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 15px;
+  border: 3px solid aquamarine;
+  outline: none;
 }
