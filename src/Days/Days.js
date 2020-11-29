@@ -5,10 +5,9 @@ import './Days.css';
 import Day from '../Day/Day';
 
 class Days extends Component {
-
     render() {
         let { id, arrDays } = this.props;
-        // console.log(this.props);
+
         return (
             <nav className="nav-days">
                 <ul>

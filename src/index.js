@@ -4,9 +4,17 @@ import './index.css';
 import App from './App/App';
 import reportWebVitals from './reportWebVitals';
 
+let valueLocalStorage = {
+  defaultCity: localStorage.getItem('defaultCity'),
+  defaultID: localStorage.getItem('defaultID')
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App
+      defaultCity={valueLocalStorage.defaultCity === null ? `Pinsk` : valueLocalStorage.defaultCity}
+      defaultID={valueLocalStorage.defaultID === null ? `` : valueLocalStorage.defaultID}
+    />
   </React.StrictMode>,
   document.getElementById('root')
 );

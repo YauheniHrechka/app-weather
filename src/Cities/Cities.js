@@ -16,6 +16,12 @@ function Cities(props) {
                             <NavLink
                                 exact
                                 to={`/city/${city.id}/${currentDate}`}
+                                isActive={match => {
+                                    if (match) {
+                                        localStorage.setItem('defaultID', city.id);
+                                        return true;
+                                    }
+                                }}
                                 activeClassName="city-active"
                             >
                                 <City city={city} />
