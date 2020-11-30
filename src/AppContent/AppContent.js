@@ -109,14 +109,11 @@ class AppContent extends Component {
     }
 
     render() {
-        let { id, main, name, sys, weather } = this.props.city;
+        let { id, name, sys, weather } = this.props.city;
         let { arrDays } = this.state;
-        let { description, icon } = weather[0];
-
-        let temperature = main.temp;
+        let { description } = weather[0];
         let country = this.getCountry(sys.country);
 
-        // console.log('this.props.city', this.props.city);
         return (
             <Router>
                 <div className="App-content">
@@ -137,6 +134,9 @@ class AppContent extends Component {
                             )
                         })}
                     </Switch>
+                    {/* <div className="footer">
+
+                    </div> */}
                 </div>
             </Router>
         )

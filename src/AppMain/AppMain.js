@@ -10,9 +10,13 @@ import AppContent from '../AppContent/AppContent';
 const history = createBrowserHistory();
 
 class AppMain extends Component {
-    state = {
-        arrCites: []
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            arrCites: []
+        };
+        this.defaultID = props.defaultID;
+    }
 
     componentDidMount = () => {
         let { defaultCity } = this.props;
@@ -53,25 +57,30 @@ class AppMain extends Component {
     handleChange = (e) => {
         let curCity = e.target.value.trim().toLowerCase();
         this.getArrCities(curCity);
+
+        this.defaultID = '';
     }
 
     render() {
-        let { defaultCity, defaultID } = this.props;
+        let { defaultCity } = this.props;
         let { arrCites } = this.state;
 
-        // get current date ...
         let currentDate = '';
         if (arrCites.length > 0) {
-            let objDate = this.getConverterDate(arrCites[0].dt);
-            currentDate = `${objDate.year}${objDate.month}${objDate.date + 1}`;
+            let { dt, id, name } = arrCites[0];
 
-            if (defaultID) {
-                history.push(`/city/${defaultID}/${currentDate}`);
-            } else {
-                history.push(`/city/${arrCites[0].id}/${currentDate}`);
+            if (arrCites.length > 0) {
+                let objDate = this.getConverterDate(dt);
+                currentDate = `${objDate.year}${objDate.month}${objDate.date}`;
 
-                localStorage.setItem('defaultCity', arrCites[0].name);
-                localStorage.setItem('defaultID', arrCites[0].id);
+                if (this.defaultID) {
+                    history.push(`/city/${this.defaultID}/${currentDate}`);
+                } else {
+                    history.push(`/city/${id}/${currentDate}`);
+
+                    localStorage.setItem('defaultCity', name);
+                    localStorage.setItem('defaultID', id);
+                }
             }
         }
 

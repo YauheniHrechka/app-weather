@@ -12,7 +12,7 @@ let valueLocalStorage = {
 ReactDOM.render(
   <React.StrictMode>
     <App
-      defaultCity={valueLocalStorage.defaultCity === null ? `Pinsk` : valueLocalStorage.defaultCity}
+      defaultCity={valueLocalStorage.defaultCity === null ? `Minsk` : valueLocalStorage.defaultCity}
       defaultID={valueLocalStorage.defaultID === null ? `` : valueLocalStorage.defaultID}
     />
   </React.StrictMode>,

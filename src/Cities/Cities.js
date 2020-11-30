@@ -10,12 +10,11 @@ function Cities(props) {
     return (
         <nav className="cities">
             <ul>
-                {arrCites.map((city, index) => {
+                {arrCites.map(city => {
                     return (
                         <li key={city.id}>
                             <NavLink
-                                exact
-                                to={`/city/${city.id}/${currentDate}`}
+                                exact to={`/city/${city.id}/${currentDate}`}
                                 isActive={match => {
                                     if (match) {
                                         localStorage.setItem('defaultID', city.id);

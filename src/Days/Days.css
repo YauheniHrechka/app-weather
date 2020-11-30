@@ -1,3 +1,7 @@
+.nav-days {
+    padding: 0 5px;
+}
+
 .nav-days a {
     text-decoration: none;
     color: aquamarine;
@@ -6,8 +10,14 @@
 
 .nav-days ul {
     list-style: none;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.nav-days ul li {
-    display: inline-block;
-}
+@media (max-width: 1140px) {
+    .nav-days ul {
+        list-style: none;
+        display: flex;
+        justify-content: flex-start;
+    }
+  }

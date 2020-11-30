@@ -1,5 +1,4 @@
-import userEvent from '@testing-library/user-event';
-import React, { Component, useCallback } from 'react';
+import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2';
 import './Chart.css';
 
@@ -25,24 +24,30 @@ class Chart extends Component {
                     data={data}
                     options={{
                         maintainAspectRatio: false,
-                        responsive: true,
+                        // responsive: true,
                         elements: {
                             line: {
                                 fill: false
-                            },
-                            point: {
-
                             }
                         },
                         tooltips: {
                             intersect: false,
+                            mode: 'index',
+                            displayColors: false,
+                            axis: 'x',
                             callbacks: {
                                 title: tooltipItems => {
-                                    return `${forecast[tooltipItems[0].index].description}\ntest`;
+                                    let { description, speed, humidity, pressure } = forecast[tooltipItems[0].index];
+                                    return `Description: ${description}\nWind: ${speed} m/s\nHumidity: ${humidity} %\nPressure: ${pressure} hpa`;
                                 },
-                                // label: (tooltipItems, data) => {
-                                //     return
-                                // }
+                                label: tooltipItems => {
+                                    let { value } = tooltipItems;
+                                    return `Temperature: ${value} °C`;
+                                },
+                                afterLabel: tooltipItems => {
+                                    let { label } = tooltipItems;
+                                    return `Time: ${label}`;
+                                }
                             }
                         },
                         scales: {
@@ -51,7 +56,7 @@ class Chart extends Component {
                                     ticks: {
                                         autoSkip: true,
                                         beginAtZero: true,
-                                        callback: (value, index, values) => {
+                                        callback: value => {
                                             return `${value} °C`;
                                         }
                                     },
@@ -59,24 +64,7 @@ class Chart extends Component {
                                         display: false
                                     }
                                 }
-                            ],
-                            // xAxes: [
-                            //     {
-                            //         ticks: {
-                            //             // autoSkip: true,
-                            //             // maxTicksLimit: 10,
-                            //             // maxRotation: 10,
-                            //             max: 10,
-                            //             beginAtZero: true,
-                            //             callback: (value, index, values) => {
-                            //                 return `${value}`;
-                            //             }
-                            //         },
-                            //         gridLines: {
-                            //             // display: false
-                            //         }
-                            //     }
-                            // ]
+                            ]
                         }
                     }}
                 />

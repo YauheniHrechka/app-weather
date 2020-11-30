@@ -15,8 +15,7 @@ class Days extends Component {
                         return (
                             <li key={mainDate}>
                                 <NavLink
-                                    exact
-                                    to={`/city/${id}/${date}`}
+                                    exact to={`/city/${id}/${date}`}
                                     activeClassName="day-active"
                                 >
                                     <Day mainDate={mainDate} />
