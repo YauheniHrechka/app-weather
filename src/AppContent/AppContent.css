@@ -49,3 +49,9 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 400px) {
+    .header-content span {
+        font-size: 14px;
+    }
+}

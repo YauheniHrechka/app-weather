@@ -13,3 +13,10 @@
     border: 3px solid aquamarine;
     background: #18181828;
 }
+
+@media (max-width: 400px) {
+    .day {
+        padding: 5px;
+        margin: 0 2px;
+    }
+}

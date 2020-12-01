@@ -40,8 +40,13 @@
     }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 400px) {
     .city {
-        width: 140px;
+        padding: 5px;
+        margin-bottom: 0;
+    }
+
+    .city .city-header div {
+        display: inline-block;
     }
 }
