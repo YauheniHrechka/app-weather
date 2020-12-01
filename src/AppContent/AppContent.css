@@ -1,7 +1,17 @@
+.App-content {
+    padding: 10px;
+    grid-area: content;
+    display: grid;
+    grid-template-areas: 
+    "header navDays"
+    "chart chart"
+    "footer footer";
+    grid-template-rows: 36px 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+}
 
 .header-content {
     padding: 0px 15px;
-    color: aquamarine;
     grid-area: header;
 }
 
@@ -9,14 +19,33 @@
     font-size: 24px;
 }
 
-.chart {
-    grid-area: chart;
+@media (max-width: 1140px) {
+    .App-content {
+        padding-left: 0px;
+        grid-template-areas: 
+        "header header"
+        "navDays navDays"
+        "chart chart"
+        "footer footer";
+        grid-template-rows: 36px 36px 1fr 1fr;
+        grid-template-columns: 5fr 1fr;
+    }    
 }
 
-.chart canvas {
-    max-width: 100%;
+@media (max-width: 960px) {
+    .header-content span {
+        font-size: 18px;
+    } 
 }
 
-.footer {
-    grid-area: footer;
+@media (max-width: 720px) {
+    .App-content {
+        padding-top: 0;
+        grid-template-areas: 
+        "header"
+        "navDays"
+        "chart";
+        grid-template-rows: 26px 36px 1fr;
+        grid-template-columns: 1fr;
+    }
 }

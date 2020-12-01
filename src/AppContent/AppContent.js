@@ -134,9 +134,6 @@ class AppContent extends Component {
                             )
                         })}
                     </Switch>
-                    {/* <div className="footer">
-
-                    </div> */}
                 </div>
             </Router>
         )

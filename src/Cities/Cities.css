@@ -1,9 +1,20 @@
 .cities a {
     text-decoration: none;
-    color: aquamarine;
     display: block;
 }
 
 .cities ul {
     list-style: none;
 }
+
+@media (max-width: 720px) {
+    .cities ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cities ul li {
+        margin: 0 5px;
+    }
+  }

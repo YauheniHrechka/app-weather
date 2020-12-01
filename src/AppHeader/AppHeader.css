@@ -1,17 +1,20 @@
 .App-header {
     position: relative;
-    padding: 0 15px 0 15px;
-    background: #252525;
-    color: aquamarine;
+    padding: 0 15px;
     grid-area: header;
   }
 
 .header {
   position: absolute;
-  line-height: 70px;
   font-size: 32px;
   font-weight: bold;
   top: 50%;
   left: 10%;
   transform: translateY(-50%);
+}
+
+@media (max-width: 960px) {
+  .header {    
+      font-size: 24px;
+  } 
 }

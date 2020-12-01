@@ -16,9 +16,15 @@ class City extends Component {
 
         return (
             <div className="city">
-                <span><b>{`${name}, ${sys.country}`}</b></span>
-                <img className="offset" src={`http://openweathermap.org/images/flags/${country}.png`} alt={country} />
-                <em className="offset">{description}</em>
+                <div className="city-header">
+                    <div>
+                        <span><b>{`${name}, ${sys.country}`}</b></span>
+                        <img className="offset" src={`http://openweathermap.org/images/flags/${country}.png`} alt={country} />
+                    </div>
+                    <div>
+                        <em className="offset">{description}</em>
+                    </div>
+                </div>
 
                 <div className="temperature">
                     <img src={`https://openweathermap.org/img/w/${icon}.png`} alt={`temperature ${icon}`} />

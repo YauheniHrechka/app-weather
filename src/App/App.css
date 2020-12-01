@@ -6,11 +6,23 @@
 
 .App {
   min-height: 100vh;
-  /* background: #252525;
-  color: aquamarine; */
+  background: #252525;
+  color: aquamarine;
   display: grid;
   grid-template-areas: 
   "header"
   "main";
-  grid-template-rows: 85px 1fr;
+  grid-template-rows: 70px 1fr;
+}
+
+@media (max-width: 960px) {
+  .App {
+    grid-template-rows: 55px 1fr;  
+  }
+}
+
+@media (max-width: 720px) {
+  .App {
+    max-height: 100vh;
+  }
 }

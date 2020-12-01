@@ -1,20 +1,18 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 .city {
     padding: 10px;
     margin: 5px 0px;
-    font-size: 14px;
     color: rgba(127, 255, 212, 0.52);
     border: 3px solid rgba(127, 255, 212, 0.12);
     border-radius: 15px;
-    /* cursor: pointer; */
     transition: .3s;
 }
 
-.city-active .city, .city:hover {
+.city .city-header div {
+    display: inline-block;
+}
+
+.city-active .city,
+.city:hover {
     color: aquamarine;
     border: 3px solid aquamarine;
     background: #18181828;
@@ -30,4 +28,20 @@
 
 .temperature img {
     max-width: 25px;
+}
+
+@media (max-width: 960px) {
+    .city {
+        padding-right: 5px;
+    }
+
+    .city .city-header div {
+        display: block;
+    }
+}
+
+@media (max-width: 720px) {
+    .city {
+        width: 140px;
+    }
 }

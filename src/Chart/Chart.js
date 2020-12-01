@@ -24,7 +24,7 @@ class Chart extends Component {
                     data={data}
                     options={{
                         maintainAspectRatio: false,
-                        // responsive: true,
+                        responsive: true,
                         elements: {
                             line: {
                                 fill: false

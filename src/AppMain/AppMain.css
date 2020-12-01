@@ -1,6 +1,5 @@
 .App-main {
     padding-bottom: 10px;
-    background: #252525;
     grid-area: main;
     display: grid;
     grid-template-areas: 
@@ -9,26 +8,14 @@
     grid-template-columns: 320px 1fr;
 }
 
-.App-content {
-    padding: 10px;
-    grid-area: content;
-    display: grid;
-    grid-template-areas: 
-    "header navDays"
-    "chart map"
-    "footer footer";
-    grid-template-rows: 36px 2fr 3fr;
-    grid-template-columns: 1fr 1fr;
-}
-
 .App-sidebar {
-  padding: 50px 10px 10px 10px;
+  padding: 50px 10px 10px 10px;  
+  font-size: 14px;
   grid-area: sidebar;
 }
 
 .search {
-  margin-bottom: 15px;
-  text-align: center;
+  margin-bottom: 15px;  
 }
 
 .search input {
@@ -40,23 +27,40 @@
   background: #18181828;
   color: aquamarine;
   font-weight: bold;
-  font-size: 14px;
   border-radius: 15px;
   border: 3px solid aquamarine;
   outline: none;
 }
 
-@media (max-width: 1140px) {
-  .App-content {
-    padding: 10px;
-    grid-area: content;
-    display: grid;
+@media (max-width: 960px) {
+  .App-main {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .App-sidebar {
+    font-size: 12px;
+  }
+
+  .search input {
+    height: 32px;
+  }
+}
+
+@media (max-width: 720px) {
+  .App-main {
     grid-template-areas: 
-    "header header"
-    "navDays navDays"
-    "chart chart"
-    "footer footer";
-    grid-template-rows: 36px 36px 1fr 1fr;
-    grid-template-columns: 5fr 1fr;
+    "sidebar"
+    "content";
+    grid-template-rows: 200px 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .App-sidebar {
+    padding: 20px 10px 10px 10px;
+  }
+
+  .search input {
+    width: 290px;
+    margin: 0 auto;
   }
 }
