@@ -6,9 +6,3 @@
 .chart canvas {
     max-width: 100%;
 }
-
-/* @media (max-width: 720px) {
-    .chart .chartjs-render-monitor {
-        height: auto !important;
-    }    
-} */

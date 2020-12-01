@@ -9,9 +9,8 @@
 
 @media (max-width: 720px) {
     .cities ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+        display: flex;
+        justify-content: center;
     }
 
     .cities ul li {

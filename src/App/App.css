@@ -13,6 +13,7 @@
   "header"
   "main";
   grid-template-rows: 70px 1fr;
+  grid-template-columns: 100%;
 }
 
 @media (max-width: 960px) {
@@ -23,6 +24,6 @@
 
 @media (max-width: 720px) {
   .App {
-    max-height: 100vh;
+    max-height: 100%;
   }
 }
