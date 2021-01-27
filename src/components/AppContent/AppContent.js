@@ -1,16 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './AppContent.css';
 
 import Days from '../Days/Days';
 import Chart from '../Chart/Chart';
 
-class AppContent extends Component {
-    state = {
-        arrDays: []
-    }
+const AppContent = ({ city: { id, name, sys, weather } }) => {
 
-    getConverterDate = (UNIX_timestamp) => {
+    let { description } = weather[0];
+    let country = sys.country.toLowerCase();
+
+    const [days, setDays] = React.useState([]);
+
+    React.useEffect(() => {
+
+        let promiseCities = new Promise((resolve, reject) => {
+            fetch(`http://api.openweathermap.org/data/2.5/forecast?id=${id}&units=metric&appid=70e1ed322b02acbc57d443dd91065f3e`)
+                .then(data => {
+                    resolve(data.json())
+                })
+        });
+
+        promiseCities
+            .then(data => {
+                setArrDays(data.list);
+            });
+    }, []);
+
+    const getConverterDate = (UNIX_timestamp) => {
         let a = new Date(UNIX_timestamp * 1000);
         let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -23,7 +40,7 @@ class AppContent extends Component {
         }
     }
 
-    setArrDays = (arrForecast) => {
+    const setArrDays = (arrForecast) => {
 
         let arrDates = [];
         let arrData = [];
@@ -35,7 +52,7 @@ class AppContent extends Component {
         arrForecast.forEach(({ dt, weather, main, wind }, index) => {
 
             let { icon, description } = weather[0];
-            let objDate = this.getConverterDate(dt);
+            let objDate = getConverterDate(dt);
 
             let currentStrDate = `${objDate.monthName} ${objDate.date}`;
             let currentDate = `${objDate.year}${objDate.month}${objDate.date}`;
@@ -84,60 +101,33 @@ class AppContent extends Component {
             });
         });
 
-        this.setState({ arrDays: arrDates });
+        setDays(arrDates);
     }
 
-    componentDidMount = () => {
-
-        let { id } = this.props.city;
-
-        let promiseCities = new Promise((resolve, reject) => {
-            fetch(`http://api.openweathermap.org/data/2.5/forecast?id=${id}&units=metric&appid=70e1ed322b02acbc57d443dd91065f3e`)
-                .then(data => {
-                    resolve(data.json())
-                })
-        });
-
-        promiseCities
-            .then(data => {
-                this.setArrDays(data.list);
-            });
-    }
-
-    getCountry = (country) => {
-        return country.toLowerCase();
-    }
-
-    render() {
-        let { id, name, sys, weather } = this.props.city;
-        let { arrDays } = this.state;
-        let { description } = weather[0];
-        let country = this.getCountry(sys.country);
-
-        return (
-            <Router>
-                <div className="App-content">
-                    <div className="header-content">
-                        <span><b>{`${name}, ${sys.country}`}</b></span>
-                        <img className="offset" src={`http://openweathermap.org/images/flags/${country}.png`} alt={country} />
-                        <em className="offset">{description}</em>
-                    </div>
-                    <Days id={id} arrDays={arrDays} />
-                    <Switch>
-                        {arrDays.map(day => {
-                            return (
-                                <Route
-                                    key={day.mainDate}
-                                    exact path={`/city/${id}/${day.date}`}
-                                    render={() => <Chart day={day} />}
-                                />
-                            )
-                        })}
-                    </Switch>
+    return (
+        <Router>
+            <div className="App-content">
+                <div className="header-content">
+                    <span><b>{`${name}, ${sys.country}`}</b></span>
+                    <img className="offset" src={`http://openweathermap.org/images/flags/${country}.png`} alt={country} />
+                    <em className="offset">{description}</em>
                 </div>
-            </Router>
-        )
-    }
+                <Days id={id} days={days} />
+                <Switch>
+                    {days.map(day => {
+                        return (
+                            <Route
+                                key={day.mainDate}
+                                exact path={`/city/${id}/${day.date}`}
+                                render={() => <Chart day={day} />}
+                            />
+                        )
+                    })}
+                </Switch>
+            </div>
+        </Router>
+    )
 }
+// }
 
 export default AppContent;

@@ -4,18 +4,17 @@ import './Cities.css';
 
 import City from '../City/City';
 
-function Cities(props) {
-    let { arrCites, currentDate } = props;
-
+const Cities = ({ cities, currentDate }) => {
     return (
         <nav className="cities">
             <ul>
-                {arrCites.map(city => {
+                {cities.map(city => {
                     return (
                         <li key={city.id}>
                             <NavLink
                                 exact to={`/city/${city.id}/${currentDate}`}
                                 isActive={match => {
+                                    console.log('match', match);
                                     if (match) {
                                         localStorage.setItem('defaultID', city.id);
                                         return true;
