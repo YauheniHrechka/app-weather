@@ -1,25 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import './AppMain.css';
+
+import { connect } from 'react-redux';
 
 import Cities from '../Cities/Cities';
 import AppContent from '../AppContent/AppContent';
 
 const history = createBrowserHistory();
 
-const AppMain = ({ defaultCity, defaultID }) => {
+const AppMain = ({ defaultCity, defaultID, cities, setCities, setDefaultCity, setDefaultID }) => {
 
     let curDate = '';
-    let curDefaultID = defaultID;
-
-    const [cities, setCities] = React.useState([]);
 
     React.useEffect(() => {
-
         getCities(defaultCity);
-
     }, []);
 
     const getConverterDate = (UNIX_timestamp) => {
@@ -56,8 +52,6 @@ const AppMain = ({ defaultCity, defaultID }) => {
     const handleChange = (e) => {
         let curCity = e.target.value.trim().toLowerCase();
         getCities(curCity);
-
-        curDefaultID = ''
     }
 
     if (cities.length > 0) {
@@ -66,14 +60,10 @@ const AppMain = ({ defaultCity, defaultID }) => {
         let objDate = getConverterDate(dt);
         curDate = `${objDate.year}${objDate.month}${objDate.date}`;
 
-        if (curDefaultID) {
-            history.push(`/city/${curDefaultID}/${curDate}`);
-        } else {
-            history.push(`/city/${id}/${curDate}`);
+        setDefaultCity(name);
+        setDefaultID(id);
 
-            localStorage.setItem('defaultCity', name);
-            localStorage.setItem('defaultID', id);
-        }
+        history.push(`/city/${defaultID}/${curDate}`);
     }
 
     return (
@@ -101,14 +91,30 @@ const AppMain = ({ defaultCity, defaultID }) => {
     )
 }
 
-AppMain.propTypes = {
-    defaultCity: PropTypes.string,
-    defaultID: PropTypes.string
-}
-
-AppMain.defaultProps = {
-    defaultCity: 'Minsk',
-    defaultID: ''
-}
-
-export default AppMain;
+export default connect(
+    state => ({
+        cities: state.cities.cities,
+        defaultCity: state.cities.defaultCity,
+        defaultID: String(state.cities.defaultID)
+    }),
+    dispatch => ({
+        setCities: cities => (
+            dispatch({
+                type: 'SET_CITIES',
+                payload: cities
+            })
+        ),
+        setDefaultCity: city => (
+            dispatch({
+                type: 'SET_DEFAULT_CITY',
+                payload: city
+            })
+        ),
+        setDefaultID: id => (
+            dispatch({
+                type: 'SET_DEFAULT_ID',
+                payload: id
+            })
+        )
+    })
+)(AppMain);

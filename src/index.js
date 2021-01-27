@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './redux/reducers';
+
 import App from './components/App/App';
 
-let valueLocalStorage = {
-  defaultCity: localStorage.getItem('defaultCity'),
-  defaultID: localStorage.getItem('defaultID')
-}
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App
-      defaultCity={valueLocalStorage.defaultCity === null ? `Minsk` : valueLocalStorage.defaultCity}
-      defaultID={valueLocalStorage.defaultID === null ? `` : valueLocalStorage.defaultID}
-    />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

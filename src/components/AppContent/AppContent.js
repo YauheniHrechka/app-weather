@@ -128,6 +128,5 @@ const AppContent = ({ city: { id, name, sys, weather } }) => {
         </Router>
     )
 }
-// }
 
 export default AppContent;
